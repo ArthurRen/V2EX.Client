@@ -1,0 +1,15 @@
+﻿<Window x:Class="V2EX.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:pages="clr-namespace:V2EX.Client.Views.Pages"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        FontFamily="Microsoft YaHei UI"
+        Background="{DynamicResource Background}" d:DesignWidth="1099" d:DesignHeight="667"
+        MinWidth="1150">
+    <pages:MainPage>
+
+    </pages:MainPage>
+</Window>

@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="Background" Color="#E2E2E2"/>
+
+    <SolidColorBrush x:Key="TopicItemBackground" Color="White"/>
+    <SolidColorBrush x:Key="TopicItemTopicNameMouseLeaveForeground" Color="#778087"/>
+    <SolidColorBrush x:Key="TopicItemTopicNameMouseHoverForeground" Color="#4D5256"/>
+
+    <SolidColorBrush x:Key="TopicItemUserNameMouseLeaveForeground" Color="#778087" />
+    <SolidColorBrush x:Key="TopicItemUserNameMouseHoverForeground" Color="#4D5256" />
+
+    <SolidColorBrush x:Key="TopicItemReplyTimesForeground" Color="White"/>
+    <SolidColorBrush x:Key="TopicItemReplyTimesMouseLeaveBackground" Color="#AAB0C6"/>
+    <SolidColorBrush x:Key="TopicItemReplyTimesMouseHoverBackground" Color="#969CB1"/>
+    <SolidColorBrush x:Key="TopicItemReplyTimesVisitedBackground" Color="#E5E5E5"/>
+
+    <SolidColorBrush x:Key="TopicItemNodeMouseLeaveBackground" Color="#F5F5F5"/>
+    <SolidColorBrush x:Key="TopicItemNodeMouseHoverBackground" Color="#E2E2E2"/>
+    <SolidColorBrush x:Key="TopicItemNodeMouseLeaveForeground" Color="#A599A5"/>
+    <SolidColorBrush x:Key="TopicItemNodeMouseHoverForeground" Color="#777777"/>
+
+    <SolidColorBrush x:Key="TopicItemLowTextForeground" Color="#CCC"/>
+
+</ResourceDictionary>
