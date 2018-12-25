@@ -94,6 +94,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Compile>
     <Compile Include="Controls\LinkButton.cs" />
+    <Compile Include="Controls\TabList.xaml.cs">
+      <DependentUpon>TabList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TopicList.xaml.cs">
       <DependentUpon>TopicList.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\PageBuilder.cs" />
+    <Page Include="Controls\TabList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\TopicList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

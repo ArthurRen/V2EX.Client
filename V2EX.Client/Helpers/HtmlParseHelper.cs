@@ -31,6 +31,18 @@ namespace V2EX.Helpers
             return result.Value.Substring(start + 1, end - start);
         }
 
+        public static IEnumerable<HtmlNode> GetTabHtmlNodes(HtmlNode doc)
+        {
+            Predication.CheckNotNull(doc);
+            return doc.SelectNodes(HtmlXPath.Instance.MainPage_TopicBox_Tabs);
+        }
+
+        public static TextLink GetTabItemFromTabHtmlNode(HtmlNode tabHtmlNode , out bool isSelected)
+        {
+            isSelected = tabHtmlNode.Attributes["class"]?.Value == HtmlXPath.Instance.SelectedTabClassName;
+            return new TextLink(tabHtmlNode.InnerText, GetAbsoluteAddress(tabHtmlNode.Attributes["href"].Value));
+        }
+
         public static HtmlNode GetTopicBoxHtmlNode(HtmlDocument doc)
         {
             Predication.CheckNotNull(doc);

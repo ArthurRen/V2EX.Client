@@ -10,8 +10,11 @@
                      mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
                      d:DataContext="{d:DesignInstance {x:Type pages:MainPageViewModel}}">
     <Grid>
-        <controls:TopicList Topics="{Binding Topics}">
-
-        </controls:TopicList>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <controls:TabList Grid.Row="0" Tabs="{Binding Tabs}" SelectedTab="{Binding SelectedTab}" Margin="10"/>
+        <controls:TopicList Grid.Row="1" Topics="{Binding Topics}"/>
     </Grid>
 </controls:CommonPage>

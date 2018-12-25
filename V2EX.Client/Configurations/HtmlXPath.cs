@@ -19,9 +19,13 @@ namespace V2EX.Client.Configurations
         public string MainPage_TopicBox =>
             "//html/body/div[@id='Wrapper']/div[@class='content']/div[@id='Main']/div[@class='box']";
 
-        public string MainPage_TopicBox_TabsList => "./div[@id='Tabs']";
+        // Tab items
+        public string MainPage_TopicBox_Tabs => "./div[@id='Tabs']/a";
+        public string SelectedTabClassName => "tab_current";
 
-        public string MainPage_TopicBox_SecTabsList => "./div[@id='SecondaryTabs']";
+        // Sec tab items
+        public string MainPage_TopicBox_SecTabs => "./div[@id='SecondaryTabs']/a";
+
 
         #region TopicItems
 
