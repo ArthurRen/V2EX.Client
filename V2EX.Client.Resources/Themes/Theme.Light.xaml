@@ -21,4 +21,8 @@
 
     <SolidColorBrush x:Key="TopicItemLowTextForeground" Color="#CCC"/>
 
+    <SolidColorBrush x:Key="TabItemMouseLeaveForeground" Color="#555"/>
+    <SolidColorBrush x:Key="TabItemMouseHoverForeground" Color="Black"/>
+    <SolidColorBrush x:Key="TabItemMouseHoverBackground" Color="#F5F5F5"/>
+
 </ResourceDictionary>

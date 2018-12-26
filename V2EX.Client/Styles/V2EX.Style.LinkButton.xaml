@@ -6,7 +6,7 @@
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="ButtonBase">
                     <Border CornerRadius="{Binding CornerRadius , RelativeSource={RelativeSource FindAncestor , AncestorType={x:Type controls:LinkButton}}}">
                         <TextBlock FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
                                    TextWrapping="Wrap"

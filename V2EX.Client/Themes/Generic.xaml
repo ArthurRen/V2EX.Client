@@ -2,5 +2,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Styles/V2EX.Style.LinkButton.xaml"/>
         <ResourceDictionary Source="../Styles/V2EX.Style.CommonPage.xaml"/>
+        <ResourceDictionary Source="../Styles/V2EX.Style.TopicList.xaml"/>
+        <ResourceDictionary Source="../Styles/V2EX.Style.TabList.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

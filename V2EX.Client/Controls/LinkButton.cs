@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace V2EX.Client.Controls
 {
-    public class LinkButton : Button
+    public class LinkButton : ButtonBase
     {
         public static readonly DependencyProperty MouseHoverBackgroundProperty =
             DependencyProperty.Register(nameof(MouseHoverBackground), typeof(Brush), typeof(LinkButton), null);

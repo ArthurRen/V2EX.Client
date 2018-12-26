@@ -17,10 +17,7 @@ using V2EX.Client.ViewModels;
 
 namespace V2EX.Client.Controls
 {
-    /// <summary>
-    /// Interaction logic for TopicList.xaml
-    /// </summary>
-    public partial class TopicList : ItemsControl
+    public class TopicList : Control
     {
         public static readonly DependencyProperty TopicsProperty =
             DependencyProperty.Register(nameof(Topics), typeof(ObservableCollection<TopicItem>), typeof(TopicList));
@@ -37,11 +34,12 @@ namespace V2EX.Client.Controls
         public static readonly DependencyProperty ViewLastReplyMemberInfoCommandProperty =
             DependencyProperty.Register(nameof(ViewLastReplyMemberInfoCommand), typeof(ICommand), typeof(TopicList));
 
-        public TopicList()
+        static TopicList()
         {
-            InitializeComponent();
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TopicList),
+                new FrameworkPropertyMetadata(typeof(TopicList)));
         }
-        
+
         public ObservableCollection<TopicItem> Topics
         {
             get => GetValue(TopicsProperty) as ObservableCollection<TopicItem>;

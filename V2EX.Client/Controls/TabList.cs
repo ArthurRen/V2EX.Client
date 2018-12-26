@@ -19,26 +19,24 @@ using V2EX.Client.ViewModels.Links;
 
 namespace V2EX.Client.Controls
 {
-    /// <summary>
-    /// Interaction logic for TabList.xaml
-    /// </summary>
-    public partial class TabList 
+    public class TabList : Control
     {
         public static readonly DependencyProperty TabsProperty =
             DependencyProperty.Register(nameof(Tabs), typeof(ObservableCollection<TextLink>), typeof(TabList));
 
         public static readonly DependencyProperty SelectedTabProperty =
             DependencyProperty.Register(nameof(SelectedTab), typeof(TextLink), typeof(TabList));
-
-        public TabList()
+        
+        static TabList()
         {
-            InitializeComponent();
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TabList),
+                new FrameworkPropertyMetadata(typeof(TabList)));
         }
 
         public ObservableCollection<TextLink> Tabs
         {
             get => GetValue(TabsProperty) as ObservableCollection<TextLink>;
-            set => SetValue(TabsProperty , value);
+            set => SetValue(TabsProperty, value);
         }
 
         public TextLink SelectedTab
