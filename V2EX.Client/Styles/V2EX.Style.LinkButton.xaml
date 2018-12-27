@@ -11,7 +11,7 @@
                         <TextBlock FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
                                    TextWrapping="Wrap"
                                    FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}"
-                                   FontStyle="{TemplateBinding FontFamily}" Margin="{Binding ContentMargin ,  RelativeSource={RelativeSource FindAncestor ,AncestorType={x:Type controls:LinkButton}}}"
+                                   FontStyle="{TemplateBinding FontStyle}" Margin="{Binding ContentMargin ,  RelativeSource={RelativeSource FindAncestor ,AncestorType={x:Type controls:LinkButton}}}"
                                    Text="{Binding Text , RelativeSource={RelativeSource FindAncestor ,AncestorType={x:Type controls:LinkButton}}}"
                                    TextDecorations="{Binding TextDecorations , RelativeSource={RelativeSource FindAncestor , AncestorType={x:Type controls:LinkButton}}}">
                             <TextBlock.Style>

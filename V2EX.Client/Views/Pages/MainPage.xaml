@@ -12,9 +12,14 @@
     <Grid Background="{DynamicResource TopicItemBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <controls:TabList Grid.Row="0" Tabs="{Binding Tabs}" SelectedTab="{Binding SelectedTab}" Margin="10"/>
-        <controls:TopicList Grid.Row="1" Topics="{Binding Topics}"/>
+        <Grid Grid.Row="1">
+            <controls:SubTabList Grid.Row="0" SubTabs="{Binding SubLeftTabs}" HorizontalAlignment="Left" MaxWidth="500"/>
+            <controls:SubTabList Grid.Row="0" SubTabs="{Binding SubRightTabs}" HorizontalAlignment="Right" MaxWidth="500"/>
+        </Grid>
+        <controls:TopicList Grid.Row="2" Topics="{Binding Topics}"/>
     </Grid>
 </controls:CommonPage>

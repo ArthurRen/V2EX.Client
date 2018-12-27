@@ -17,6 +17,8 @@ namespace V2EX.Client.ViewModels.Pages
     {
         private ObservableCollection<TopicItem> _topics;
         private ObservableCollection<TextLink> _tabs;
+        private ObservableCollection<TextLink> _subLeftTabs;
+        private ObservableCollection<TextLink> _subRightTabs;
         private TextLink _selectedTab;
 
         public ObservableCollection<TopicItem> Topics
@@ -31,14 +33,33 @@ namespace V2EX.Client.ViewModels.Pages
             set => SetProperty(ref _tabs, value);
         }
 
+        public ObservableCollection<TextLink> SubRightTabs
+        {
+            get => _subRightTabs;
+            set => SetProperty(ref _subRightTabs, value);
+        }
+
+        public ObservableCollection<TextLink> SubLeftTabs
+        {
+            get => _subLeftTabs;
+            set => SetProperty(ref _subLeftTabs, value);
+        }
+        
         public TextLink SelectedTab
         {
             get => _selectedTab;
             set => SetProperty(ref _selectedTab, value);
         }
 
+        //private DateTime _start;
+        public MainPageViewModel()
+        {
+            //_start = DateTime.Now;
+        }
+
         protected override void OnHtmlLoaded(HtmlDocument htmlDocument)
         {
+            
             var doc = V2EXRequest.GetHtmlDoc(Urls.Instance.Home);
             var topicBoxNode = HtmlParseHelper.GetTopicBoxHtmlNode(doc);
             // Tabs
@@ -50,10 +71,21 @@ namespace V2EX.Client.ViewModels.Pages
                 if (isSelected)
                     SelectedTab = tabItem;
             }
+            // SubTabs
+            SubLeftTabs = new ObservableCollection<TextLink>(
+                HtmlParseHelper.GetLeftSubTabHtmlNodes(topicBoxNode)
+                    .Select(HtmlParseHelper.GetTabItemFromTabHtmlNode));
+            
+            SubRightTabs = new ObservableCollection<TextLink>(
+                HtmlParseHelper.GetRightSubTabHtmlNodes(topicBoxNode)
+                    .Select(HtmlParseHelper.GetTabItemFromTabHtmlNode));
+
             // Topics
             var topicItemNodes = HtmlParseHelper.GetTopicItemsHtmlNodes(topicBoxNode);
             var topics = topicItemNodes.Select(HtmlParseHelper.GetTopicItemFromTopicItemNode);
             Topics = new ObservableCollection<TopicItem>(topics);
+
+            //Console.WriteLine((DateTime.Now - _start).TotalMilliseconds);
         }
     }
 }

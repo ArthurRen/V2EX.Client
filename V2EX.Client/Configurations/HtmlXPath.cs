@@ -22,9 +22,10 @@ namespace V2EX.Client.Configurations
         // Tab items
         public string MainPage_TopicBox_Tabs => "./div[@id='Tabs']/a";
         public string SelectedTabClassName => "tab_current";
-
+        
         // Sec tab items
-        public string MainPage_TopicBox_SecTabs => "./div[@id='SecondaryTabs']/a";
+        public string MainPage_TopicBox_SubLeftTabs => "./div[@id='SecondaryTabs']/a";
+        public string MainPage_TopicBox_SubRightTabs => "./div[@id='SecondaryTabs']/div[@class='fr']/a";
 
 
         #region TopicItems

@@ -31,16 +31,33 @@ namespace V2EX.Helpers
             return result.Value.Substring(start + 1, end - start);
         }
 
-        public static IEnumerable<HtmlNode> GetTabHtmlNodes(HtmlNode doc)
+        public static IEnumerable<HtmlNode> GetTabHtmlNodes(HtmlNode node)
         {
-            Predication.CheckNotNull(doc);
-            return doc.SelectNodes(HtmlXPath.Instance.MainPage_TopicBox_Tabs);
+            Predication.CheckNotNull(node);
+            return node.SelectNodes(HtmlXPath.Instance.MainPage_TopicBox_Tabs);
+        }
+
+        public static TextLink GetTabItemFromTabHtmlNode(HtmlNode tabHtmlNode)
+        {
+            return new TextLink(tabHtmlNode.InnerText, GetAbsoluteAddress(tabHtmlNode.Attributes["href"].Value));
         }
 
         public static TextLink GetTabItemFromTabHtmlNode(HtmlNode tabHtmlNode , out bool isSelected)
         {
             isSelected = tabHtmlNode.Attributes["class"]?.Value == HtmlXPath.Instance.SelectedTabClassName;
             return new TextLink(tabHtmlNode.InnerText, GetAbsoluteAddress(tabHtmlNode.Attributes["href"].Value));
+        }
+
+        public static IEnumerable<HtmlNode> GetLeftSubTabHtmlNodes(HtmlNode node)
+        {
+            Predication.CheckNotNull(node);
+            return node.SelectNodes(HtmlXPath.Instance.MainPage_TopicBox_SubLeftTabs);
+        }
+
+        public static IEnumerable<HtmlNode> GetRightSubTabHtmlNodes(HtmlNode node)
+        {
+            Predication.CheckNotNull(node);
+            return node.SelectNodes(HtmlXPath.Instance.MainPage_TopicBox_SubRightTabs);
         }
 
         public static HtmlNode GetTopicBoxHtmlNode(HtmlDocument doc)
