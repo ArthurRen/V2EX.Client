@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using V2EX.Client.Network;
+using V2EX.Client.Utils;
 using V2EX.Client.ViewModels.Infrastructure;
 
 namespace V2EX.Client.ViewModels.Pages
@@ -22,7 +23,13 @@ namespace V2EX.Client.ViewModels.Pages
 
         protected virtual HtmlDocument GetHtml()
         {
+#if DEBUG
+            var result = FuncUtil.GetFuncExecuteTime(() => V2EXRequest.GetHtmlDoc(HtmlUrl), out var milliseconds);
+            Console.WriteLine($"It takes {milliseconds} milliseconds to load html");
+            return result;
+#else
             return V2EXRequest.GetHtmlDoc(HtmlUrl);
+#endif
         }
 
         async void IAwareViewLoadedAndUnloaded.OnViewLoaded(object view)
@@ -40,5 +47,7 @@ namespace V2EX.Client.ViewModels.Pages
         }
 
         protected virtual void OnHtmlLoaded(HtmlDocument htmlDocument) { }
+
+
     }
 }

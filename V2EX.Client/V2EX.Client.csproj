@@ -105,6 +105,7 @@
     <Compile Include="Network\NetworkContext.cs" />
     <Compile Include="Network\V2exRequest.cs" />
     <Compile Include="Network\V2EXRequestMethod.cs" />
+    <Compile Include="Utils\Func.cs" />
     <Compile Include="Utils\Predication.cs" />
     <Compile Include="ViewModels\Infrastructure\IAwareViewInitialize.cs" />
     <Compile Include="ViewModels\Infrastructure\IAwareViewLoadedAndUnloaded.cs" />
