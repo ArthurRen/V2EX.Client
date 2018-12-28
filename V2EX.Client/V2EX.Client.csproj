@@ -59,6 +59,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.7.1.0.431\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -99,13 +100,15 @@
     <Compile Include="Controls\TopicList.cs" />
     <Compile Include="Converters\NotNullToVisibilityConverter.cs" />
     <Compile Include="Extensions\ImageExtension.cs" />
+    <Compile Include="Helpers\AsyncConsumerQueue.cs" />
     <Compile Include="Helpers\CookieHelper.cs" />
     <Compile Include="Helpers\HtmlParseHelper.cs" />
     <Compile Include="Helpers\HttpHelper.cs" />
+    <Compile Include="Helpers\MemoryCacheHelper.cs" />
     <Compile Include="Network\NetworkContext.cs" />
     <Compile Include="Network\V2exRequest.cs" />
     <Compile Include="Network\V2EXRequestMethod.cs" />
-    <Compile Include="Utils\Func.cs" />
+    <Compile Include="Utils\FuncUtil.cs" />
     <Compile Include="Utils\Predication.cs" />
     <Compile Include="ViewModels\Infrastructure\IAwareViewInitialize.cs" />
     <Compile Include="ViewModels\Infrastructure\IAwareViewLoadedAndUnloaded.cs" />
