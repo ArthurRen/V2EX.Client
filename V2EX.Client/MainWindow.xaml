@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow"
         FontFamily="Microsoft YaHei UI"
-        Background="{DynamicResource Background}" d:DesignWidth="1099" d:DesignHeight="667"
-        MinWidth="1150">
-    <pages:MainPage>
-
-    </pages:MainPage>
+        Background="{DynamicResource WindowBackground}" d:DesignWidth="1099" d:DesignHeight="667"
+        MinWidth="750">
+    <pages:MainPage/>
 </Window>

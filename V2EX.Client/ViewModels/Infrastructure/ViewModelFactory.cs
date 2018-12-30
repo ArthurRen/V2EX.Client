@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Prism;
 using Prism.Unity;
 using Unity;
-using V2EX.Client.ViewModels.Pages;
 
 namespace V2EX.Client.ViewModels.Infrastructure
 {

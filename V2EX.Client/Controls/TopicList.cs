@@ -33,7 +33,7 @@ namespace V2EX.Client.Controls
 
         public static readonly DependencyProperty ViewLastReplyMemberInfoCommandProperty =
             DependencyProperty.Register(nameof(ViewLastReplyMemberInfoCommand), typeof(ICommand), typeof(TopicList));
-
+        
         static TopicList()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TopicList),
@@ -45,7 +45,7 @@ namespace V2EX.Client.Controls
             get => GetValue(TopicsProperty) as ObservableCollection<TopicItem>;
             set => SetValue(TopicsProperty, value);
         }
-
+        
         public ICommand ViewTopicCommand
         {
             get => GetValue(ViewTopicCommandProperty) as ICommand;

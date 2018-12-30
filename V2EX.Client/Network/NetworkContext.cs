@@ -13,12 +13,12 @@ namespace V2EX.Client.Network
             "//body/div[@id='Wrapper']/div[@class='content']/div[@id='Main']/div[@class='box']/div[@class='cell']/form/table/tr[3]/td[2]/div[1]";
         public static string Cookie { get; private set; }
 
-        //public static Image DownloadVerificationCodeImage()
+        //public static ImageUri DownloadVerificationCodeImage()
         //{
         //    if (GetLoginVerificationCodeImageUrl(out var relativeUrl))
         //    {
         //        var stream = HttpHelper.GetResponseStream(Url.Home + relativeUrl);
-        //        return Image.FromStream(stream);
+        //        return ImageUri.FromStream(stream);
         //    }
 
         //    return null;

@@ -3,15 +3,11 @@
                     xmlns:controls="clr-namespace:V2EX.Client.Controls"
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
 
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Resources;component/Styles/V2EX.Style.Animation.xaml" />
-    </ResourceDictionary.MergedDictionaries>
-
     <Style TargetType="controls:CommonPage" BasedOn="{StaticResource {x:Type Page}}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:CommonPage">
-                    <ContentPresenter Content="{TemplateBinding Content}" Style="{StaticResource FadeInAnimation}"/>
+                    <ContentPresenter Margin="10" Content="{TemplateBinding Content}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

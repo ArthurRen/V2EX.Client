@@ -50,11 +50,9 @@ namespace V2EX.Client.ViewModels.Pages
             get => _selectedTab;
             set => SetProperty(ref _selectedTab, value);
         }
-
-        //private DateTime _start;
+        
         public MainPageViewModel()
         {
-            //_start = DateTime.Now;
         }
 
         protected override void OnHtmlLoaded(HtmlDocument htmlDocument)
@@ -62,20 +60,23 @@ namespace V2EX.Client.ViewModels.Pages
             
             var doc = V2EXRequest.GetHtmlDoc(Urls.Instance.Home);
             var topicBoxNode = HtmlParseHelper.GetTopicBoxHtmlNode(doc);
+
             // Tabs
-            Tabs = new ObservableCollection<TextLink>();
+            var tabs = new ObservableCollection<TextLink>();
             foreach (var node in HtmlParseHelper.GetTabHtmlNodes(topicBoxNode))
             {
                 var tabItem = HtmlParseHelper.GetTabItemFromTabHtmlNode(node, out var isSelected);
-                Tabs.Add(tabItem);
+                tabs.Add(tabItem);
                 if (isSelected)
                     SelectedTab = tabItem;
             }
+            Tabs = tabs;
+
             // SubTabs
             SubLeftTabs = new ObservableCollection<TextLink>(
                 HtmlParseHelper.GetLeftSubTabHtmlNodes(topicBoxNode)
                     .Select(HtmlParseHelper.GetTabItemFromTabHtmlNode));
-            
+
             SubRightTabs = new ObservableCollection<TextLink>(
                 HtmlParseHelper.GetRightSubTabHtmlNodes(topicBoxNode)
                     .Select(HtmlParseHelper.GetTabItemFromTabHtmlNode));
@@ -84,8 +85,7 @@ namespace V2EX.Client.ViewModels.Pages
             var topicItemNodes = HtmlParseHelper.GetTopicItemsHtmlNodes(topicBoxNode);
             var topics = topicItemNodes.Select(HtmlParseHelper.GetTopicItemFromTopicItemNode);
             Topics = new ObservableCollection<TopicItem>(topics);
-
-            //Console.WriteLine((DateTime.Now - _start).TotalMilliseconds);
+            
         }
     }
 }

@@ -13,7 +13,7 @@ namespace V2EX.Client.Configurations
         private Urls() { }
 
         public string Https = "https:";
-
+        
         public string Home => Https + "//www.v2ex.com";
 
         public string SignInPage => Home + "/signin";

@@ -9,6 +9,14 @@ namespace V2EX.Client.ViewModels.Pages
 {
     public abstract class CommonPageViewModel : ViewModelBase , IAwareViewLoadedAndUnloaded , IAwareViewInitialize
     {
+        private bool _isLoadingHtml;
+
+        public bool IsLoadingHtml
+        {
+            get => _isLoadingHtml;
+            set => SetProperty(ref _isLoadingHtml, value);
+        }
+
         protected string HtmlUrl { get; private set; }
         
         protected CommonPageViewModel()
@@ -34,8 +42,10 @@ namespace V2EX.Client.ViewModels.Pages
 
         async void IAwareViewLoadedAndUnloaded.OnViewLoaded(object view)
         {
+            IsLoadingHtml = true;
             var htmlDoc = await Task.Factory.StartNew(GetHtml);
-            OnHtmlLoaded(htmlDoc);
+            await Task.Factory.StartNew(() => OnHtmlLoaded(htmlDoc));
+            IsLoadingHtml = false;
         }
 
         void IAwareViewLoadedAndUnloaded.OnViewUnloaded(object view)
@@ -47,7 +57,6 @@ namespace V2EX.Client.ViewModels.Pages
         }
 
         protected virtual void OnHtmlLoaded(HtmlDocument htmlDocument) { }
-
-
+        
     }
 }

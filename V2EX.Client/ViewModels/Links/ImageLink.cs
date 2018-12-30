@@ -15,34 +15,23 @@ namespace V2EX.Client.ViewModels.Links
 {
     public class ImageLink : Link
     {
-        private ImageSource _imageSource;
-
-        public ImageSource ImageSource
+        private Uri _imageUri;
+        
+        public Uri ImageUri
         {
-            get => _imageSource;
-            set => SetProperty(ref _imageSource, value);
+            get => _imageUri;
+            set => SetProperty(ref _imageUri, value);
         }
 
         public ImageLink(string imageUrl, string hyperLinkAddress) : base(hyperLinkAddress)
         {
-            var policy = new RequestCachePolicy(RequestCacheLevel.Revalidate);
-            ImageSource = new BitmapImage(new Uri(imageUrl) , policy);
-            //if (!MemoryCacheHelper.TryGet(imageUrl, out ImageSource imageSource))
+            ImageUri = new Uri(imageUrl);
+            //if (!MemoryCacheHelper.TryGet(imageUrl, out ImageUri image))
             //{
-            //    MemoryCacheHelper.Add(imageUrl, ImageSource);
+            //    MemoryCacheHelper.Add(imageUrl, ImageUri);
             //    return;
             //}
-            //ImageSource = imageSource;
-        }
-
-        public ImageLink(Image image, string hyperLinkAddress) : base(hyperLinkAddress)
-        {
-            ImageSource = image.ToBitmapImage();
-        }
-
-        public ImageLink(ImageSource imageSource, string hyperLinkAddress) : base(hyperLinkAddress)
-        {
-            ImageSource = imageSource;
+            //ImageUri = image;
         }
     }
 }

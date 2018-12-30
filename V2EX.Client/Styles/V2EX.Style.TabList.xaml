@@ -17,7 +17,7 @@
                              Background="{DynamicResource TopicItemBackground}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" 
+                                <WrapPanel Orientation="Horizontal"
                                            Background="{Binding Background , RelativeSource={RelativeSource FindAncestor , AncestorType=ListBox}}"/>
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
@@ -26,14 +26,26 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="ListBoxItem">
-                                            <Border Margin="0,0,5,0" Name="Border" Background="Transparent" CornerRadius="3" BorderThickness="0">
+                                            <Border Cursor="Hand" Margin="0,0,5,0" Name="Border" Background="Transparent" CornerRadius="3" BorderThickness="0">
                                                 <TextBlock Margin="8,3" Name="TextBlock" Text="{Binding DisplayText}" FontSize="14px" Foreground="{DynamicResource TabItemMouseLeaveForeground}"/>
                                             </Border>
                                             <ControlTemplate.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Trigger.Setters>
+                                                <!--Mouseover Trigger-->
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="IsMouseOver" Value="True" />
+                                                        <Condition Property="ListBoxItem.IsSelected" Value="False" />
+                                                    </MultiTrigger.Conditions>
+                                                    <MultiTrigger.Setters>
                                                         <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource TabItemMouseHoverForeground}"/>
                                                         <Setter TargetName="Border" Property="Background" Value="{DynamicResource TabItemMouseHoverBackground}"/>
+                                                    </MultiTrigger.Setters>
+                                                </MultiTrigger>
+                                                <!--Selected Trigger-->
+                                                <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                                                    <Trigger.Setters>
+                                                        <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource TabItemSelectedForeground}"/>
+                                                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource TabItemSelectedBackground}"/>
                                                     </Trigger.Setters>
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
