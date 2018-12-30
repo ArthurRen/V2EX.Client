@@ -6,6 +6,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Resources;component/Styles/V2EX.Style.TextBlock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Resources;component/Styles/V2EX.Style.Animation.xaml" />
         <ResourceDictionary Source="../Converters/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -33,9 +34,10 @@
                         </ItemsControl.Template>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Background="{DynamicResource TopicItemBackground}"
+                                <Border Background="{DynamicResource GenericBackground}"
                                         BorderThickness="0,0,0,1" BorderBrush="{DynamicResource TopicItemBorderBrush}"
-                                        HorizontalAlignment="Stretch">
+                                        HorizontalAlignment="Stretch"
+                                        Style="{StaticResource FadeInAnimation}">
                                     <Grid Margin="10" MinHeight="48" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>

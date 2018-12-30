@@ -3,7 +3,8 @@
 
     <SolidColorBrush x:Key="WindowBackground" Color="#E2E2E2"/>
 
-    <SolidColorBrush x:Key="TopicItemBackground" Color="White"/>
+    <SolidColorBrush x:Key="GenericBackground" Color="White"/>
+
     <SolidColorBrush x:Key="TopicItemTopicNameMouseLeaveForeground" Color="#778087"/>
     <SolidColorBrush x:Key="TopicItemTopicNameMouseHoverForeground" Color="#4D5256"/>
 
@@ -30,4 +31,8 @@
     <SolidColorBrush x:Key="TabItemSelectedBackground" Color="#333344"/>
     
     <SolidColorBrush x:Key="SubTabListBackground" Color="#F9F9F9"/>
+
+    <SolidColorBrush x:Key="CaptionButtonMouseHoverBackground" Color="#E5E5E5" />
+
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="#0070CC" />
 </ResourceDictionary>

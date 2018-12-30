@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="{DynamicResource TopicItemBackground}">
+        <Border Grid.Row="0" Background="{DynamicResource GenericBackground}">
             <controls:TabList Margin="5 10" Tabs="{Binding Tabs}" SelectedTab="{Binding SelectedTab}"/>
         </Border>
         <Grid Grid.Row="1">

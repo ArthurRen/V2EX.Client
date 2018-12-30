@@ -14,7 +14,7 @@
                     <ListBox ItemsSource="{Binding Tabs , RelativeSource={RelativeSource FindAncestor , AncestorType=controls:TabList}}"
                              SelectedItem="{Binding SelectedTab ,RelativeSource={RelativeSource FindAncestor , AncestorType=controls:TabList}}"
                              BorderThickness="0"
-                             Background="{DynamicResource TopicItemBackground}">
+                             Background="{DynamicResource GenericBackground}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal"

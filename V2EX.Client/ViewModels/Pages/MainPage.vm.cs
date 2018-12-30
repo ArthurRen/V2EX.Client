@@ -70,6 +70,7 @@ namespace V2EX.Client.ViewModels.Pages
                 if (isSelected)
                     SelectedTab = tabItem;
             }
+
             Tabs = tabs;
 
             // SubTabs
@@ -84,7 +85,18 @@ namespace V2EX.Client.ViewModels.Pages
             // Topics
             var topicItemNodes = HtmlParseHelper.GetTopicItemsHtmlNodes(topicBoxNode);
             var topics = topicItemNodes.Select(HtmlParseHelper.GetTopicItemFromTopicItemNode);
-            Topics = new ObservableCollection<TopicItem>(topics);
+            
+            // TODO : Optimize
+            // Trigger fade in animation
+            Topics = new ObservableCollection<TopicItem>();
+            BeginInvokeInUiThread(async () =>
+            {
+                foreach (var topic in topics)
+                {
+                    Topics.Add(topic);
+                    await Task.Delay(10);
+                }
+            });
             
         }
     }

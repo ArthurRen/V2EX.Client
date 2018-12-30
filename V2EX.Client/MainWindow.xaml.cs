@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using V2EX.Client.Configurations;
+using V2EX.Client.Controls;
 using V2EX.Client.Views;
 using V2EX.Client.Views.Pages;
 using V2EX.Client.ViewModels;
@@ -22,7 +23,7 @@ namespace V2EX.Client
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow 
     {
         public MainWindow()
         {
