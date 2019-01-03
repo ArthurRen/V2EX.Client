@@ -6,5 +6,6 @@
         <ResourceDictionary Source="../Styles/V2EX.Style.TabList.xaml"/>
         <ResourceDictionary Source="../Styles/V2EX.Style.SubTabList.xaml"/>
         <ResourceDictionary Source="../Styles/V2EX.Style.V2exWindow.xaml"/>
+        <ResourceDictionary Source="../Styles/V2EX.Style.LoadingViewSwitchPresenter.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

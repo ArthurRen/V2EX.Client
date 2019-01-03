@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using HtmlAgilityPack;
+using V2EX.Client.Commands;
 using V2EX.Client.Configurations;
 using V2EX.Client.Network;
 using V2EX.Client.ViewModels.Infrastructure;
@@ -20,25 +23,23 @@ namespace V2EX.Client.ViewModels.Pages
         private ObservableCollection<TextLink> _subLeftTabs;
         private ObservableCollection<TextLink> _subRightTabs;
         private TextLink _selectedTab;
+        private HtmlNode _topicBoxNode;
 
         public ObservableCollection<TopicItem> Topics
         {
             get => _topics;
             set => SetProperty(ref _topics, value);
         }
-
         public ObservableCollection<TextLink> Tabs
         {
             get => _tabs;
             set => SetProperty(ref _tabs, value);
         }
-
         public ObservableCollection<TextLink> SubRightTabs
         {
             get => _subRightTabs;
             set => SetProperty(ref _subRightTabs, value);
         }
-
         public ObservableCollection<TextLink> SubLeftTabs
         {
             get => _subLeftTabs;
@@ -48,20 +49,35 @@ namespace V2EX.Client.ViewModels.Pages
         public TextLink SelectedTab
         {
             get => _selectedTab;
-            set => SetProperty(ref _selectedTab, value);
+            set
+            {
+                var isFirstLoad = _selectedTab == null;
+                if (SetProperty(ref _selectedTab, value) && !isFirstLoad)
+                {
+                    CurrentUrl = _selectedTab.Uri;
+                    Topics = null;
+                    LoadHtmlAsync();
+                }
+            }
         }
-        
+
         public MainPageViewModel()
         {
         }
 
         protected override void OnHtmlLoaded(HtmlDocument htmlDocument)
         {
-            
-            var doc = V2EXRequest.GetHtmlDoc(Urls.Instance.Home);
-            var topicBoxNode = HtmlParseHelper.GetTopicBoxHtmlNode(doc);
+            //_currentHtmlDocument = V2EXRequest.GetHtmlDoc(Urls.Instance.Home);
+            _topicBoxNode = HtmlParseHelper.GetTopicBoxHtmlNode(htmlDocument);
+            ParseTabItems(_topicBoxNode);
+            ParseSubTabItems(_topicBoxNode);
+            ParseTopicItems(_topicBoxNode);
+        }
 
-            // Tabs
+        protected void ParseTabItems(HtmlNode topicBoxNode)
+        {
+            if (Tabs != null)
+                return;
             var tabs = new ObservableCollection<TextLink>();
             foreach (var node in HtmlParseHelper.GetTabHtmlNodes(topicBoxNode))
             {
@@ -70,34 +86,37 @@ namespace V2EX.Client.ViewModels.Pages
                 if (isSelected)
                     SelectedTab = tabItem;
             }
-
             Tabs = tabs;
+        }
 
-            // SubTabs
-            SubLeftTabs = new ObservableCollection<TextLink>(
-                HtmlParseHelper.GetLeftSubTabHtmlNodes(topicBoxNode)
-                    .Select(HtmlParseHelper.GetTabItemFromTabHtmlNode));
+        protected void ParseSubTabItems(HtmlNode topicBoxNode)
+        {
+            var leftTabNodes = HtmlParseHelper.GetLeftSubTabHtmlNodes(topicBoxNode);
+            if (leftTabNodes != null)
+            {
+                var leftTabItems = leftTabNodes.Select(HtmlParseHelper.GetTabItemFromTabHtmlNode);
+                SubLeftTabs = new ObservableCollection<TextLink>(leftTabItems);
+            }
+            
+            var rightTabNodes = HtmlParseHelper.GetRightSubTabHtmlNodes(topicBoxNode);
+            if (rightTabNodes != null)
+            {
+                var rightTabItems = rightTabNodes.Select(HtmlParseHelper.GetTabItemFromTabHtmlNode);
+                SubRightTabs = new ObservableCollection<TextLink>(rightTabItems);
+            }
+        }
 
-            SubRightTabs = new ObservableCollection<TextLink>(
-                HtmlParseHelper.GetRightSubTabHtmlNodes(topicBoxNode)
-                    .Select(HtmlParseHelper.GetTabItemFromTabHtmlNode));
-
-            // Topics
+        protected void ParseTopicItems(HtmlNode topicBoxNode)
+        {
             var topicItemNodes = HtmlParseHelper.GetTopicItemsHtmlNodes(topicBoxNode);
             var topics = topicItemNodes.Select(HtmlParseHelper.GetTopicItemFromTopicItemNode);
-            
-            // TODO : Optimize
-            // Trigger fade in animation
             Topics = new ObservableCollection<TopicItem>();
-            BeginInvokeInUiThread(async () =>
+            foreach (var topic in topics)
             {
-                foreach (var topic in topics)
-                {
-                    Topics.Add(topic);
-                    await Task.Delay(10);
-                }
-            });
-            
+                InvokeInUiThread(() => { Topics.Add(topic); });
+                Thread.Sleep(10);
+            }
+            //Topics = new ObservableCollection<TopicItem>(topics);
         }
     }
 }

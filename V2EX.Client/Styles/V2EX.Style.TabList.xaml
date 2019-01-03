@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:V2EX.Client.Controls">
+                    xmlns:controls="clr-namespace:V2EX.Client.Controls"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
 
     <Style x:Key="FocusVisualStyle" TargetType="ListViewItem">
         <Setter Property="Background" Value="Black" />
@@ -12,9 +13,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:TabList">
                     <ListBox ItemsSource="{Binding Tabs , RelativeSource={RelativeSource FindAncestor , AncestorType=controls:TabList}}"
-                             SelectedItem="{Binding SelectedTab ,RelativeSource={RelativeSource FindAncestor , AncestorType=controls:TabList}}"
-                             BorderThickness="0"
-                             Background="{DynamicResource GenericBackground}">
+                             SelectedItem="{Binding SelectedTab , Mode=TwoWay ,RelativeSource={RelativeSource FindAncestor , AncestorType=controls:TabList}}"
+                             BorderThickness="0" Name="ListBox"
+                             Background="{DynamicResource GenericBackground}"
+                             SelectionMode="Single">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal"

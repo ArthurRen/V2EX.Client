@@ -1,15 +1,22 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using HtmlAgilityPack;
+using log4net;
 using V2EX.Client.Network;
 using V2EX.Client.Utils;
 using V2EX.Client.ViewModels.Infrastructure;
 
 namespace V2EX.Client.ViewModels.Pages
 {
-    public abstract class CommonPageViewModel : ViewModelBase , IAwareViewLoadedAndUnloaded , IAwareViewInitialize
+    public abstract class CommonPageViewModel : ViewModelBase, IAwareViewLoadedAndUnloaded
     {
         private bool _isLoadingHtml;
+        private bool _isRenderingHtml;
+        private int _requestIndex;
+        private readonly object _lock = new object();
+        protected ILog Logger { get; }
 
         public bool IsLoadingHtml
         {
@@ -17,43 +24,64 @@ namespace V2EX.Client.ViewModels.Pages
             set => SetProperty(ref _isLoadingHtml, value);
         }
 
-        protected string HtmlUrl { get; private set; }
-        
+        public bool IsRenderingHtml
+        {
+            get => _isRenderingHtml;
+            set => SetProperty(ref _isRenderingHtml, value);
+        }
+
+        protected Uri CurrentUrl { get; set; }
+    
         protected CommonPageViewModel()
         {
-
+            Logger = LogManager.GetLogger(GetType());
         }
 
         public void Initialize(string htmlUrl)
         {
-            HtmlUrl = htmlUrl;
+            CurrentUrl = new Uri(htmlUrl , UriKind.Absolute);
         }
 
-        protected virtual HtmlDocument GetHtml()
+        protected async void LoadHtmlAsync()
         {
-#if DEBUG
-            var result = FuncUtil.GetFuncExecuteTime(() => V2EXRequest.GetHtmlDoc(HtmlUrl), out var milliseconds);
-            Console.WriteLine($"It takes {milliseconds} milliseconds to load html");
-            return result;
-#else
-            return V2EXRequest.GetHtmlDoc(HtmlUrl);
-#endif
-        }
-
-        async void IAwareViewLoadedAndUnloaded.OnViewLoaded(object view)
-        {
+            if (IsLoadingHtml)
+                return;
             IsLoadingHtml = true;
-            var htmlDoc = await Task.Factory.StartNew(GetHtml);
-            await Task.Factory.StartNew(() => OnHtmlLoaded(htmlDoc));
+
+            _requestIndex++;
+            try
+            {
+                await Task.Factory.StartNew(param =>
+                {
+                    if (!(param is int index))
+                        return;
+
+                    var doc = V2EXRequest.GetHtmlDoc(CurrentUrl);
+                    if (_requestIndex != index)
+                        return;
+
+                    IsRenderingHtml = true;
+                    OnHtmlLoaded(doc);
+                    IsRenderingHtml = false;
+
+                } , _requestIndex);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e);
+            }
+            
             IsLoadingHtml = false;
+        } 
+
+        void IAwareViewLoadedAndUnloaded.OnViewLoaded(object view)
+        {
+            LoadHtmlAsync();
         }
 
         void IAwareViewLoadedAndUnloaded.OnViewUnloaded(object view)
         {
-        }
 
-        void IAwareViewInitialize.OnViewInitialize(object view)
-        {
         }
 
         protected virtual void OnHtmlLoaded(HtmlDocument htmlDocument) { }

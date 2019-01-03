@@ -14,10 +14,10 @@ namespace V2EX.Client.Network
 {
     public class V2EXRequest
     {
-        public static HtmlDocument GetHtmlDoc(string url)
+        public static HtmlDocument GetHtmlDoc(Uri uri)
         {
             var isCookieEmpty = string.IsNullOrEmpty(RequestHeaders.Instance.PrivateCookie);
-            var request = new V2EXRequest(url, V2EXRequestMethod.Get);
+            var request = new V2EXRequest(uri, V2EXRequestMethod.Get);
             if (isCookieEmpty)
             {
                 var doc = request.Load(out var cookies);
@@ -30,12 +30,12 @@ namespace V2EX.Client.Network
         }
 
         private readonly HtmlWeb _htmlWeb;
-        private readonly string _url;
+        private readonly Uri _uri;
 
-        public V2EXRequest(string url , V2EXRequestMethod method)
+        public V2EXRequest(Uri uri , V2EXRequestMethod method)
         {
-            Predication.CheckNotNull(url);
-            _url = url;
+            Predication.CheckNotNull(uri);
+            _uri = uri;
             _htmlWeb = new HtmlWeb();
             _htmlWeb.PreRequest += request =>
             {
@@ -47,7 +47,7 @@ namespace V2EX.Client.Network
 
         public HtmlDocument Load()
         {
-            return _htmlWeb.Load(_url);
+            return _htmlWeb.Load(_uri);
         }
 
         public HtmlDocument Load(out CookieCollection cookies)
@@ -62,14 +62,14 @@ namespace V2EX.Client.Network
             {
                 result = response.Cookies;
             };
-            var doc = _htmlWeb.Load(_url);
+            var doc = _htmlWeb.Load(_uri);
             cookies = result;
             return doc;
         }
 
         public async Task<HtmlDocument> LoadAsync()
         {
-            return await Task.Factory.StartNew(() => _htmlWeb.Load(_url));
+            return await Task.Factory.StartNew(() => _htmlWeb.Load(_uri));
         }
     }
 }

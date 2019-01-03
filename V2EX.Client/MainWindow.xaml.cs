@@ -31,9 +31,6 @@ namespace V2EX.Client
             Content =
                 PageBuilder
                     .Wrap<MainPage>()
-                    .Initialize(page => Console.WriteLine("view init 1"))
-                    .Initialize(page => Console.WriteLine("view init 2"))
-                    .Initialize(page => Console.WriteLine("view init 3"))
                     .Build(Urls.Instance.Home);
         }
     }

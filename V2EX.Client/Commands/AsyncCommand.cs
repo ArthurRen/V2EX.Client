@@ -7,20 +7,38 @@ using System.Windows.Input;
 
 namespace V2EX.Client.Commands
 {
+    internal class AsyncCommand : ICommand
+    {
+        public event EventHandler CanExecuteChanged;
+
+        private readonly Action _execute;
+        private readonly Func<bool> _canExecute;
+
+        public AsyncCommand(Action execute, Func<bool> canExecute = null)
+        {
+            _execute = async () => await Task.Factory.StartNew(execute);
+            _canExecute = () => canExecute?.Invoke() ?? true;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute?.Invoke() ?? true;
+        }
+
+        public async void Execute(object parameter)
+        {
+            await Task.Factory.StartNew(_execute);
+        }
+    }
+
     internal class AsyncCommand<TParam> : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
         private readonly Action<TParam> _execute;
         private readonly Func<TParam, bool> _canExecute;
-
-        public AsyncCommand(Action execute, Func<bool> canExecute)
-        {
-            _execute = async _ => await Task.Factory.StartNew(execute);
-            _canExecute = _ => canExecute?.Invoke() ?? true;
-        }
-
-        public AsyncCommand(Action<TParam> execute, Func<TParam , bool> canExecute)
+        
+        public AsyncCommand(Action<TParam> execute, Func<TParam , bool> canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;
