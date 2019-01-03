@@ -55,7 +55,6 @@ namespace V2EX.Client.ViewModels.Pages
                 if (SetProperty(ref _selectedTab, value) && !isFirstLoad)
                 {
                     CurrentUrl = _selectedTab.Uri;
-                    Topics = null;
                     LoadHtmlAsync();
                 }
             }
@@ -110,10 +109,16 @@ namespace V2EX.Client.ViewModels.Pages
         {
             var topicItemNodes = HtmlParseHelper.GetTopicItemsHtmlNodes(topicBoxNode);
             var topics = topicItemNodes.Select(HtmlParseHelper.GetTopicItemFromTopicItemNode);
-            Topics = new ObservableCollection<TopicItem>();
+            InvokeInUiThread(() =>
+            {
+                if (Topics == null)
+                    Topics = new ObservableCollection<TopicItem>();
+                else
+                    Topics.Clear();
+            });
             foreach (var topic in topics)
             {
-                InvokeInUiThread(() => { Topics.Add(topic); });
+                BeginInvokeInUiThread(() => { Topics.Add(topic); });
                 Thread.Sleep(10);
             }
             //Topics = new ObservableCollection<TopicItem>(topics);

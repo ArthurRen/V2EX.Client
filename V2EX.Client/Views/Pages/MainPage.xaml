@@ -20,10 +20,10 @@
 
         <Border Grid.Row="0" Background="{DynamicResource GenericBackground}">
             <controls:TabList Margin="5 10" Tabs="{Binding Tabs}" SelectedTab="{Binding SelectedTab , Mode=TwoWay}"
-                              IsEnabled="{Binding IsRenderingHtml , Converter={StaticResource NotConverter}}"/>
+                              IsEnabled="{Binding IsLoadingHtml , Converter={StaticResource NotConverter}}"/>
         </Border>
 
-        <controls:LoadingViewSwitchPresenter Grid.Row="1" IsLoading="{Binding IsLoadingHtml}">
+        <controls:LoadingViewSwitchPresenter Grid.Row="1" IsLoading="False">
             <controls:LoadingViewSwitchPresenter.LoadingView>
                 <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{StaticResource FadeInAnimation.Loaded}">
                     <TextBlock Text="Loading..." FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
