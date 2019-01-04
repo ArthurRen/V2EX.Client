@@ -23,13 +23,13 @@ namespace V2EX.Client
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow 
+    public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
-            Content =
-                PageBuilder
+            Content =    
+                    PageBuilder
                     .Wrap<MainPage>()
                     .Build(Urls.Instance.Home);
         }

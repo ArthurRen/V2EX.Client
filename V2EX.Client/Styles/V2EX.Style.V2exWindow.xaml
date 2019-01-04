@@ -3,14 +3,13 @@
                     xmlns:controls="clr-namespace:V2EX.Client.Controls">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Resources;component/Styles/V2EX.Style.Button.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Resources;component/Images/V2EX.Style.Icons.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="Path" x:Key="PathStyle">
         <!--<Setter Property="Stroke" Value="{Binding Fill, RelativeSource={RelativeSource Self}}" />-->
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="9"/>
+        <Setter Property="Margin" Value="7"/>
         <Setter Property="Fill" Value="{Binding Foreground , RelativeSource={RelativeSource FindAncestor ,AncestorType=Button}}"/>
         <Setter Property="Stretch" Value="Uniform"/>
     </Style>
@@ -52,28 +51,28 @@
                                         <Button Name="MinButton" Style="{StaticResource CaptionButtonStyle}" Background="Transparent" Command="{Binding MinimizeCommand, RelativeSource={RelativeSource FindAncestor , AncestorType=controls:V2exWindow}}">
                                             <Path Style="{StaticResource PathStyle}" >
                                                 <Path.Data>
-                                                    <Geometry>F1 M1024,1024z M0,0z M960,960L64,960C28.6,960 0,931.4 0,896 0,860.6 28.6,832 64,832L960,832C995.4,832 1024,860.6 1024,896 1024,931.4 995.4,960 960,960z</Geometry>
+                                                    <Geometry>F1 M1024,1024z M0,0z M872,474L152,474C147.6,474,144,477.6,144,482L144,542C144,546.4,147.6,550,152,550L872,550C876.4,550,880,546.4,880,542L880,482C880,477.6,876.4,474,872,474z</Geometry>
                                                 </Path.Data>
                                             </Path>
                                         </Button>
                                         <Button Name="RestoreButton" Style="{StaticResource CaptionButtonStyle}"  Background="Transparent" Command="{Binding RestoreCommand, RelativeSource={RelativeSource FindAncestor , AncestorType=controls:V2exWindow}}">
                                             <Path Style="{StaticResource PathStyle}">
                                                 <Path.Data>
-                                                    <Geometry>F1 M1024,1024z M0,0z M256,128L256,320 64,320 64,896 768,896 768,704 960,704 960,128 256,128z M704,832L128,832 128,384 704,384 704,832z M896,640L768,640 768,320 320,320 320,192 896,192 896,640z</Geometry>
+                                                    <Geometry>F1 M1024,1024z M0,0z M391,240.9C390.2,234.3,382.1,231.5,377.4,236.2L333.7,279.9 200,146.3C196.9,143.2,191.8,143.2,188.7,146.3L146.3,188.6C143.2,191.7,143.2,196.8,146.3,199.9L280,333.6 236.1,377.5C231.4,382.2,234.2,390.3,240.8,391.1L401,410C406.1,410.6,410.5,406.3,409.9,401.1L391,240.9z M401.1,614.1L240.8,633C234.2,633.8,231.4,641.9,236.1,646.6L280,690.5 146.3,824C143.2,827.1,143.2,832.2,146.3,835.3L188.7,877.6C191.8,880.7,196.9,880.7,200,877.6L333.7,744 377.4,787.7C382.1,792.4,390.2,789.6,391,783L409.9,622.9C410.5,617.8,406.2,613.5,401.1,614.1z M622.9,409.9L783.2,391C789.8,390.2,792.6,382.1,787.9,377.4L744,333.6 877.7,200C880.8,196.9,880.8,191.8,877.7,188.7L835.3,146.4C832.2,143.3,827.1,143.3,824,146.4L690.3,279.9 646.6,236.2C641.9,231.5,633.8,234.3,633,240.9L614.1,401C613.5,406.2,617.8,410.5,622.9,409.9z M744,690.4L787.9,646.5C792.6,641.8,789.8,633.7,783.2,632.9L623,614C617.9,613.4,613.5,617.7,614.1,622.9L633,783.1C633.8,789.7,641.9,792.5,646.6,787.8L690.3,744.1 824,877.7C827.1,880.8,832.2,880.8,835.3,877.7L877.7,835.4C880.8,832.3,880.8,827.2,877.7,824.1L744,690.4z</Geometry>
                                                 </Path.Data>
                                             </Path>
                                         </Button>
                                         <Button Name="MaxButton" Style="{StaticResource CaptionButtonStyle}"  Background="Transparent" Command="{Binding MaximizeCommand, RelativeSource={RelativeSource FindAncestor , AncestorType=controls:V2exWindow}}">
                                             <Path Style="{StaticResource PathStyle}" >
                                                 <Path.Data>
-                                                    <Geometry>F1 M1024,1024z M0,0z M832,928L192,928C139.072,928,96,884.928,96,832L96,192C96,139.072,139.072,96,192,96L832,96C884.928,96,928,139.072,928,192L928,832C928,884.928,884.928,928,832,928z M192,160C174.368,160,160,174.368,160,192L160,832C160,849.664,174.368,864,192,864L832,864C849.664,864,864,849.664,864,832L864,192C864,174.368,849.664,160,832,160L192,160z</Geometry>
+                                                    <Geometry>F1 M1024,1024z M0,0z M290,236.4L333.9,192.5C338.6,187.8,335.8,179.7,329.2,178.9L169,160C163.9,159.4,159.5,163.7,160.1,168.9L179,329.1C179.8,335.7,187.9,338.5,192.6,333.8L236.3,290.1 370,423.7C373.1,426.8,378.2,426.8,381.3,423.7L423.7,381.4C426.8,378.3,426.8,373.2,423.7,370.1L290,236.4z M642.7,423.7C645.8,426.8,650.9,426.8,654,423.7L787.7,290.1 831.4,333.8C836.1,338.5,844.2,335.7,845,329.1L863.9,169C864.5,163.9,860.2,159.5,855,160.1L694.8,179C688.2,179.8,685.4,187.9,690.1,192.6L734,236.5 600.3,370C597.2,373.1,597.2,378.2,600.3,381.3L642.7,423.7z M845,694.9C844.2,688.3,836.1,685.5,831.4,690.2L787.7,733.9 654,600.3C650.9,597.2,645.8,597.2,642.7,600.3L600.3,642.6C597.2,645.7,597.2,650.8,600.3,653.9L734,787.6 690.1,831.5C685.4,836.2,688.2,844.3,694.8,845.1L855,864C860.1,864.6,864.5,860.3,863.9,855.1L845,694.9z M381.3,600.3C378.2,597.2,373.1,597.2,370,600.3L236.3,733.9 192.6,690.2C187.9,685.5,179.8,688.3,179,694.9L160.1,855C159.5,860.1,163.8,864.5,169,863.9L329.2,845C335.8,844.2,338.6,836.1,333.9,831.4L290,787.6 423.7,654C426.8,650.9,426.8,645.8,423.7,642.7L381.3,600.3z</Geometry>
                                                 </Path.Data>
                                             </Path>
                                         </Button>
                                         <Button Name="CloseButton" Style="{StaticResource CaptionCloseButtonStyle}" Background="Transparent" Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor , AncestorType=controls:V2exWindow}}">
                                             <Path Style="{StaticResource PathStyle}" >
                                                 <Path.Data>
-                                                    <Geometry>F1 M1024,1024z M0,0z M877.216,491.808 M575.328,510.496L946.784,140.672C964.352,123.168 964.448,94.848 946.976,77.248 929.472,59.616 901.184,59.584 883.616,77.056L512.032,446.944 143.712,77.216C126.304,59.712 97.92,59.648 80.384,77.12 62.848,94.624 62.816,123.008 80.288,140.576L448.512,510.208 77.216,879.808C59.648,897.312 59.552,925.632 77.024,943.232 85.76,952.032 97.28,956.448 108.8,956.448 120.224,956.448 131.648,952.096 140.384,943.392L511.744,573.696 883.424,946.784C892.192,955.616 903.68,960 915.168,960 926.624,960 938.08,955.616 946.816,946.912 964.32,929.408 964.384,901.088 946.912,883.52L575.328,510.496 575.328,510.496z M575.328,510.496</Geometry>
+                                                    <Geometry>F1 M1024,1024z M0,0z M563.8,512L826.3,199.1C830.7,193.9,827,186,820.2,186L740.4,186C735.7,186,731.2,188.1,728.1,191.7L511.6,449.8 295.1,191.7C292.1,188.1,287.6,186,282.8,186L203,186C196.2,186,192.5,193.9,196.9,199.1L459.4,512 196.9,824.9C192.5,830.1,196.2,838,203,838L282.8,838C287.5,838,292,835.9,295.1,832.3L511.6,574.2 728.1,832.3C731.1,835.9,735.6,838,740.4,838L820.2,838C827,838,830.7,830.1,826.3,824.9L563.8,512z</Geometry>
                                                 </Path.Data>
                                             </Path>
                                         </Button>

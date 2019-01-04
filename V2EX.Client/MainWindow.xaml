@@ -16,5 +16,4 @@
         <TextBlock Text="Way To Explore!" FontFamily="Kaufmann BT" VerticalAlignment="Bottom" FontSize="16" />
     </controls:V2exWindow.TitleContent>
 
-    <pages:MainPage/>
 </controls:V2exWindow>

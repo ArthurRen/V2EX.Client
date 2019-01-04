@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using V2EX.Client.ViewModels;
+using V2EX.Foundation.Commands;
 
 namespace V2EX.Client.Controls
 {
@@ -33,7 +34,7 @@ namespace V2EX.Client.Controls
 
         public static readonly DependencyProperty ViewLastReplyMemberInfoCommandProperty =
             DependencyProperty.Register(nameof(ViewLastReplyMemberInfoCommand), typeof(ICommand), typeof(TopicList));
-        
+
         static TopicList()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TopicList),

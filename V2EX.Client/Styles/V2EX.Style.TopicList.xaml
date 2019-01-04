@@ -10,7 +10,6 @@
         <ResourceDictionary Source="../Converters/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-
     <Style TargetType="controls:TopicList">
         <Setter Property="Template">
             <Setter.Value>
@@ -25,17 +24,15 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.Template>
                             <ControlTemplate>
-                                <Border BorderBrush="{DynamicResource TopicItemBorderBrush}" BorderThickness="0 1">
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                    </ScrollViewer>
-                                </Border>
+                                <ScrollViewer BorderBrush="{DynamicResource TopicItemBorderBrush}" BorderThickness="0 1" VerticalScrollBarVisibility="Auto">
+                                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </ScrollViewer>
                             </ControlTemplate>
                         </ItemsControl.Template>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Background="{DynamicResource GenericBackground}"
-                                        Style="{StaticResource FadeInAnimation.Loaded}"
+                                        Style="{StaticResource FloatInRightToLeftAnimation}"
                                         BorderThickness="0,0,0,1" BorderBrush="{DynamicResource TopicItemBorderBrush}"
                                         HorizontalAlignment="Stretch">
                                     <Grid Margin="10" MinHeight="48" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Stretch">

@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using HtmlAgilityPack;
-using V2EX.Client.Commands;
-using V2EX.Client.Configurations;
-using V2EX.Client.Network;
-using V2EX.Client.ViewModels.Infrastructure;
 using V2EX.Client.ViewModels.Links;
 using V2EX.Helpers;
 
@@ -60,8 +51,25 @@ namespace V2EX.Client.ViewModels.Pages
             }
         }
 
-        public MainPageViewModel()
+        protected override void OnHtmlLoading()
         {
+            InvokeInUiThread(() =>
+            {
+                if (Topics == null)
+                    Topics = new ObservableCollection<TopicItem>();
+                else
+                    Topics.Clear();
+
+                if (SubLeftTabs == null)
+                    SubLeftTabs = new ObservableCollection<TextLink>();
+                else
+                    SubLeftTabs.Clear();
+
+                if (SubRightTabs == null)
+                    SubRightTabs = new ObservableCollection<TextLink>();
+                else
+                    SubRightTabs.Clear();
+            });
         }
 
         protected override void OnHtmlLoaded(HtmlDocument htmlDocument)
@@ -94,14 +102,14 @@ namespace V2EX.Client.ViewModels.Pages
             if (leftTabNodes != null)
             {
                 var leftTabItems = leftTabNodes.Select(HtmlParseHelper.GetTabItemFromTabHtmlNode);
-                SubLeftTabs = new ObservableCollection<TextLink>(leftTabItems);
+                BeginInvokeInUiThread(() => SubLeftTabs.AddRange(leftTabItems));
             }
             
             var rightTabNodes = HtmlParseHelper.GetRightSubTabHtmlNodes(topicBoxNode);
             if (rightTabNodes != null)
             {
                 var rightTabItems = rightTabNodes.Select(HtmlParseHelper.GetTabItemFromTabHtmlNode);
-                SubRightTabs = new ObservableCollection<TextLink>(rightTabItems);
+                BeginInvokeInUiThread(() => SubRightTabs.AddRange(rightTabItems));
             }
         }
 
@@ -109,19 +117,11 @@ namespace V2EX.Client.ViewModels.Pages
         {
             var topicItemNodes = HtmlParseHelper.GetTopicItemsHtmlNodes(topicBoxNode);
             var topics = topicItemNodes.Select(HtmlParseHelper.GetTopicItemFromTopicItemNode);
-            InvokeInUiThread(() =>
-            {
-                if (Topics == null)
-                    Topics = new ObservableCollection<TopicItem>();
-                else
-                    Topics.Clear();
-            });
             foreach (var topic in topics)
             {
                 BeginInvokeInUiThread(() => { Topics.Add(topic); });
                 Thread.Sleep(10);
             }
-            //Topics = new ObservableCollection<TopicItem>(topics);
         }
     }
 }

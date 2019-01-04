@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing.Imaging;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using HtmlAgilityPack;
 using log4net;
+using V2EX.Client.Commands;
 using V2EX.Client.Network;
 using V2EX.Client.Utils;
 using V2EX.Client.ViewModels.Infrastructure;
@@ -32,9 +34,12 @@ namespace V2EX.Client.ViewModels.Pages
 
         protected Uri CurrentUrl { get; set; }
     
+        public ICommand RefreshPageCommand { get; }
+
         protected CommonPageViewModel()
         {
             Logger = LogManager.GetLogger(GetType());
+            RefreshPageCommand = new AsyncCommand(LoadHtmlAsync , () => !IsLoadingHtml);
         }
 
         public void Initialize(string htmlUrl)
@@ -56,6 +61,7 @@ namespace V2EX.Client.ViewModels.Pages
                     if (!(param is int index))
                         return;
 
+                    OnHtmlLoading();
                     var doc = V2EXRequest.GetHtmlDoc(CurrentUrl);
                     if (_requestIndex != index)
                         return;
@@ -85,6 +91,7 @@ namespace V2EX.Client.ViewModels.Pages
         }
 
         protected virtual void OnHtmlLoaded(HtmlDocument htmlDocument) { }
-        
+
+        protected virtual void OnHtmlLoading() { }
     }
 }

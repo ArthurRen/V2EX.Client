@@ -11,7 +11,6 @@
                 <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Resources;component/Styles/V2EX.Style.ListView.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Resources;component/Styles/V2EX.Style.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Resources;component/Styles/V2EX.Style.Animation.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Resources;component/Images/V2EX.Style.Icons.xaml" />
                 <ResourceDictionary Source="Styles/V2EX.Style.CommonPage.xaml" />
                 <ResourceDictionary Source="Converters/Converters.xaml" />
             </ResourceDictionary.MergedDictionaries>
