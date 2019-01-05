@@ -15,6 +15,7 @@ namespace V2EX.Client.ViewModels.Pages
         private ObservableCollection<TextLink> _subRightTabs;
         private TextLink _selectedTab;
         private HtmlNode _topicBoxNode;
+        private bool _hasSubTabs;
 
         public ObservableCollection<TopicItem> Topics
         {
@@ -51,6 +52,12 @@ namespace V2EX.Client.ViewModels.Pages
             }
         }
 
+        public bool HasSubTabs
+        {
+            get => _hasSubTabs;
+            set => SetProperty(ref _hasSubTabs, value);
+        }
+        
         protected override void OnHtmlLoading()
         {
             InvokeInUiThread(() =>
@@ -74,7 +81,7 @@ namespace V2EX.Client.ViewModels.Pages
 
         protected override void OnHtmlLoaded(HtmlDocument htmlDocument)
         {
-            //_currentHtmlDocument = V2EXRequest.GetHtmlDoc(Urls.Instance.Home);
+            //_currentHtmlDocument = V2EXRequest.GetHtmlDoc(Urls.Instance.HomeAddress);
             _topicBoxNode = HtmlParseHelper.GetTopicBoxHtmlNode(htmlDocument);
             ParseTabItems(_topicBoxNode);
             ParseSubTabItems(_topicBoxNode);
@@ -111,6 +118,8 @@ namespace V2EX.Client.ViewModels.Pages
                 var rightTabItems = rightTabNodes.Select(HtmlParseHelper.GetTabItemFromTabHtmlNode);
                 BeginInvokeInUiThread(() => SubRightTabs.AddRange(rightTabItems));
             }
+
+            HasSubTabs = !(leftTabNodes == null && rightTabNodes == null);
         }
 
         protected void ParseTopicItems(HtmlNode topicBoxNode)

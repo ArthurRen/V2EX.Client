@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using V2EX.Client.ViewModels;
+using V2EX.Client.ViewModels.Links;
 using V2EX.Foundation.Commands;
 
 namespace V2EX.Client.Controls

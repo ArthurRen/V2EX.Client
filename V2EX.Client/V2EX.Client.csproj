@@ -93,7 +93,6 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Configurations\HtmlXPath.cs" />
     <Compile Include="Configurations\RequestHeaders.cs" />
-    <Compile Include="Configurations\Urls.cs" />
     <Compile Include="Controls\CommonPage.cs">
       <Generator>MSBuild:Compile</Generator>
     </Compile>
@@ -113,6 +112,7 @@
     <Compile Include="Helpers\HtmlParseHelper.cs" />
     <Compile Include="Helpers\HttpHelper.cs" />
     <Compile Include="Helpers\MemoryCacheHelper.cs" />
+    <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Network\NetworkContext.cs" />
     <Compile Include="Network\V2exRequest.cs" />
     <Compile Include="Network\V2EXRequestMethod.cs" />
@@ -124,10 +124,15 @@
     <Compile Include="ViewModels\Infrastructure\ViewModelFactory.cs" />
     <Compile Include="ViewModels\Links\ImageLink.cs" />
     <Compile Include="ViewModels\Links\Link.cs" />
+    <Compile Include="ViewModels\MainWindow.vm.cs" />
     <Compile Include="ViewModels\Pages\MainPage.vm.cs" />
     <Compile Include="ViewModels\Pages\CommonPage.vm.cs" />
     <Compile Include="ViewModels\Links\TextLink.cs" />
-    <Compile Include="ViewModels\TopicItem.cs" />
+    <Compile Include="ViewModels\Links\TopicItem.cs" />
+    <Compile Include="ViewModels\UserSignInPanel.vm.cs" />
+    <Compile Include="Views\UserSignInPanel.xaml.cs">
+      <DependentUpon>UserSignInPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -136,7 +141,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\UserSignInPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -144,7 +153,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

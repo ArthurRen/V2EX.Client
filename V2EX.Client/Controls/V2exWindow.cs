@@ -18,6 +18,9 @@ namespace V2EX.Client.Controls
         public static readonly DependencyProperty TitleContentProperty =
             DependencyProperty.Register(nameof(TitleContent), typeof(object), typeof(V2exWindow));
         
+        public static readonly DependencyProperty CustomContentProperty =
+            DependencyProperty.Register(nameof(CustomContent), typeof(object), typeof(V2exWindow));
+
         public static readonly DependencyProperty CloseCommandProperty =
             DependencyProperty.Register(nameof(CloseCommand), typeof(ICommand), typeof(V2exWindow));
         
@@ -45,6 +48,12 @@ namespace V2EX.Client.Controls
         {
             get => GetValue(TitleContentProperty);
             set => SetValue(TitleContentProperty, value);
+        }
+
+        public object CustomContent
+        {
+            get => GetValue(CustomContentProperty);
+            set => SetValue(CustomContentProperty, value);
         }
 
         public ICommand CloseCommand

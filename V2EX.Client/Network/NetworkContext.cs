@@ -17,7 +17,7 @@ namespace V2EX.Client.Network
         //{
         //    if (GetLoginVerificationCodeImageUrl(out var relativeUrl))
         //    {
-        //        var stream = HttpHelper.GetResponseStream(Url.Home + relativeUrl);
+        //        var stream = HttpHelper.GetResponseStream(Url.HomeAddress + relativeUrl);
         //        return ImageUri.FromStream(stream);
         //    }
 

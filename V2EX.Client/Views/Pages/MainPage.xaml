@@ -29,12 +29,14 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <controls:SubTabList Grid.Row="0" Grid.Column="0" SubTabs="{Binding SubLeftTabs}" HorizontalAlignment="Left" Margin="5 10"/>
-            <controls:SubTabList Grid.Row="0" Grid.Column="1" SubTabs="{Binding SubRightTabs}" HorizontalAlignment="Right" Margin="0 10 0 0"/>
+            <Grid Grid.Row="0" Visibility="{Binding HasSubTabs , Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <controls:SubTabList Grid.Column="0" SubTabs="{Binding SubLeftTabs}" HorizontalAlignment="Left" Margin="5 10"/>
+                <controls:SubTabList Grid.Column="1" SubTabs="{Binding SubRightTabs}" HorizontalAlignment="Right" Margin="0 10 0 0"/>
+            </Grid>
             <controls:TopicList  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Topics="{Binding Topics}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                                  Style="{StaticResource FadeInAnimation.Loaded}"/>
         </Grid>

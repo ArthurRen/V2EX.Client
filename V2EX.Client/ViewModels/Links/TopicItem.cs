@@ -10,7 +10,7 @@ using Prism.Mvvm;
 using V2EX.Client.Utils;
 using V2EX.Client.ViewModels.Links;
 
-namespace V2EX.Client.ViewModels
+namespace V2EX.Client.ViewModels.Links
 {
     public class TopicItem : BindableBase
     {
@@ -62,11 +62,6 @@ namespace V2EX.Client.ViewModels
         {
             get => _avatar;
             set => SetProperty(ref _avatar, value);
-        }
-        
-        public TopicItem()
-        {
-
         }
     }
 }

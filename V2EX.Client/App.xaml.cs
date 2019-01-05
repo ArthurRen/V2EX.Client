@@ -7,6 +7,7 @@ using Prism.Mvvm;
 using Prism.Unity;
 using Unity;
 using V2EX.Client.ViewModels.Infrastructure;
+using V2EX.Client.Views;
 
 namespace V2EX.Client
 {

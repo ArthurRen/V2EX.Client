@@ -42,12 +42,18 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.RowSpan="2" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="5">
+                                    <!--Icon & TitleContent-->
+                                    <StackPanel Grid.RowSpan="2" Orientation="Horizontal" Margin="5">
                                         <Image WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Left" Source="{TemplateBinding Icon}"/>
                                         <ContentPresenter Content="{Binding TitleContent , 
                                                                 RelativeSource={RelativeSource FindAncestor , AncestorType=controls:V2exWindow}}" />
                                     </StackPanel>
-                                    <StackPanel Height="30" Grid.Column="2" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <!--Custom Area-->
+                                    <ContentPresenter Grid.Column="1" WindowChrome.IsHitTestVisibleInChrome="True"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                                                      Content="{Binding CustomContent, 
+                                                            RelativeSource={RelativeSource FindAncestor , AncestorType=controls:V2exWindow}}"/>
+                                    <!--System Button-->
+                                    <StackPanel Grid.Column="2" Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
                                         <Button Name="MinButton" Style="{StaticResource CaptionButtonStyle}" Background="Transparent" Command="{Binding MinimizeCommand, RelativeSource={RelativeSource FindAncestor , AncestorType=controls:V2exWindow}}">
                                             <Path Style="{StaticResource PathStyle}" >
                                                 <Path.Data>

@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using V2EX.Client.Configurations;
+using V2EX.Client.Helpers;
 using V2EX.Client.Utils;
 using V2EX.Client.ViewModels;
 using V2EX.Client.ViewModels.Links;
@@ -18,7 +19,7 @@ namespace V2EX.Helpers
         private static readonly Regex BackgroundImageRegex = new Regex("background-image[\\s]*[:][\\s]*url[\\s]*\\((.*?)\\);");
         private const string DotSplit = "&nbsp;•&nbsp;";
 
-        private static string GetAbsoluteAddress(string relativeAddress) => Urls.Instance.Home + relativeAddress;
+        private static string GetAbsoluteAddress(string relativeAddress) => UrlHelper.HomeAddress + relativeAddress;
 
         public static string GetVerificationImageUrl(string cssString)
         {
@@ -149,7 +150,7 @@ namespace V2EX.Helpers
                 result.RepliesCount = new TextLink(replyCountNodeText, GetAbsoluteAddress(replyCountNodeHyperText));
             }
 
-            result.Avatar = new ImageLink(Urls.Instance.Https + imageUrl, GetAbsoluteAddress(hyperLinkAddress));
+            result.Avatar = new ImageLink(UrlHelper.Scheme + imageUrl, GetAbsoluteAddress(hyperLinkAddress));
             result.Title = new TextLink(titleText , GetAbsoluteAddress(titleHyperLink));
 
             return result;
