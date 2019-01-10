@@ -15,7 +15,8 @@
         Icon="pack://application:,,,/V2EX.Client.Resources;component/Images/v2ex_2x.png"
         Background="{DynamicResource WindowBackground}" d:DesignWidth="1099" d:DesignHeight="667"
         MinWidth="750" BorderThickness="2" BorderBrush="{DynamicResource WindowBorderBrush}"
-        CaptionBackground="{DynamicResource GenericBackground}">
+        CaptionBackground="{DynamicResource GenericBackground}"
+        SnapsToDevicePixels="True">
     <controls:V2exWindow.Resources>
         <Style TargetType="Path" x:Key="PathStyle">
             <Setter Property="VerticalAlignment" Value="Center"/>

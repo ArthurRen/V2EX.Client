@@ -14,12 +14,20 @@ namespace V2EX.Client.ViewModels
     {
         public ICommand SignInCommand { get; }
 
+        public ICommand ForgetPasswordCommand { get; }
+
         public UserSignInPanelViewModel()
         {
             SignInCommand = new RelayCommand(SignIn);
+            ForgetPasswordCommand = new RelayCommand(ForgetPassword);
         }
 
         private void SignIn()
+        {
+
+        }
+
+        private void ForgetPassword()
         {
 
         }

@@ -25,6 +25,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="8"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -32,7 +34,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="V23X -> 登录" FontSize="30" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="登录" FontSize="30" FontWeight="Bold"/>
 
         <!--Username-->
         <TextBlock Grid.Row="2" Grid.Column="0" Text="用户名：" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -40,7 +42,11 @@
 
         <!--Password-->
         <TextBlock Grid.Row="4" Grid.Column="0" Text="密码：" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <PasswordBox Grid.Row="4" Grid.Column="1"  HorizontalAlignment="Left" Width="200"/>
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+            <PasswordBox HorizontalAlignment="Left" Width="200"/>
+            <controls:LinkButton VerticalAlignment="Bottom" IsUnderlineVisible="True" Margin="10,0,0,0" MouseLeaveForeground="DarkRed"
+                                 Text="忘记密码" Command="{Binding ForgetPasswordCommand}"/>
+        </StackPanel>
 
         <!--Verification Code-->
         <TextBlock Grid.Row="6" Grid.Column="0" Text="验证码：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -48,13 +54,12 @@
             <Image Width="320" Height="80" />
         </Border>
 
-        <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+        <TextBox Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Width="200"/>
+
+        <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal">
             <Button Content="登录" Width="45" Height="30" Margin="0,0,10,0"/>
             <Button Content="注册" Width="45" Height="30" Margin="10,0"/>
         </StackPanel>
-
-        <controls:LinkButton Grid.Row="10" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" IsUnderlineVisible="True"
-                             Text="忘记密码" Command="{Binding SignInCommand}"/>
 
     </Grid>
 </UserControl>

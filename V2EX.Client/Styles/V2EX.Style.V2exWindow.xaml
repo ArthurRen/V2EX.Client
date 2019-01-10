@@ -9,7 +9,7 @@
         <!--<Setter Property="Stroke" Value="{Binding Fill, RelativeSource={RelativeSource Self}}" />-->
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="7"/>
+        <Setter Property="Margin" Value="5"/>
         <Setter Property="Fill" Value="{Binding Foreground , RelativeSource={RelativeSource FindAncestor ,AncestorType=Button}}"/>
         <Setter Property="Stretch" Value="Uniform"/>
     </Style>
@@ -26,6 +26,7 @@
                     <Border BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             Name="Border">
                         <Grid Name="RootGrid">
@@ -53,7 +54,7 @@
                                                       Content="{Binding CustomContent, 
                                                             RelativeSource={RelativeSource FindAncestor , AncestorType=controls:V2exWindow}}"/>
                                     <!--System Button-->
-                                    <StackPanel Grid.Column="2" Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <StackPanel SnapsToDevicePixels="False" Grid.Column="2" Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
                                         <Button Name="MinButton" Style="{StaticResource CaptionButtonStyle}" Background="Transparent" Command="{Binding MinimizeCommand, RelativeSource={RelativeSource FindAncestor , AncestorType=controls:V2exWindow}}">
                                             <Path Style="{StaticResource PathStyle}" >
                                                 <Path.Data>

@@ -24,7 +24,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.Template>
                             <ControlTemplate>
-                                <ScrollViewer BorderBrush="{DynamicResource TopicItemBorderBrush}" BorderThickness="0 1" VerticalScrollBarVisibility="Auto">
+                                <ScrollViewer CanContentScroll="True" BorderBrush="{DynamicResource TopicItemBorderBrush}" BorderThickness="0 1" VerticalScrollBarVisibility="Auto">
                                     <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </ScrollViewer>
                             </ControlTemplate>
