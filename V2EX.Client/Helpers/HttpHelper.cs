@@ -5,14 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Cache;
-using System.Net.Mime;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using HtmlAgilityPack;
-using Newtonsoft.Json;
 using V2EX.Client.Configurations;
-using V2EX.Client.Utils;
+using V2EX.CommonLib.Utils;
 using WebRequest = System.Net.WebRequest;
 
 namespace V2EX.Client.Helpers
@@ -41,8 +35,8 @@ namespace V2EX.Client.Helpers
 
         public static WebResponse GetHttpResponse(string url , string method , CookieCollection cookies = null)
         {
-            Predication.CheckNotNull(url);
-            Predication.CheckNotNull(method);
+            Preconditions.CheckNotNull(url);
+            Preconditions.CheckNotNull(method);
             if (!(WebRequest.Create(url) is HttpWebRequest request))
                 throw new InvalidOperationException($"URL : {url} is invalid because request is not HttpWebRequest");
             request.Method = method;

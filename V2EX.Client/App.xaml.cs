@@ -6,7 +6,8 @@ using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Unity;
 using Unity;
-using V2EX.Client.ViewModels.Infrastructure;
+using V2EX.Client.Infrastructure;
+using V2EX.Client.ViewModels;
 using V2EX.Client.Views;
 
 namespace V2EX.Client
@@ -29,8 +30,8 @@ namespace V2EX.Client
         protected override void ConfigureViewModelLocator()
         {
             var factory =
-                ViewModelFactory.Instance
-                    .IfInheritFrom<FrameworkElement , ViewModelBase>((view , viewModel) => viewModel.Dispatcher = view.Dispatcher)
+                new ViewModelFactory(() => Container)
+                    .IfInheritFrom<FrameworkElement, ViewModelBase>((view, viewModel) => viewModel.Dispatcher = view.Dispatcher)
                     .IfInheritFrom<FrameworkElement, IAwareViewLoadedAndUnloaded>((view, viewModel) =>
                     {
                         view.Loaded += (sender, _) => viewModel.OnViewLoaded(sender);

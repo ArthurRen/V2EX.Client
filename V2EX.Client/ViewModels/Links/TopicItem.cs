@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
-using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using Prism.Mvvm;
-using V2EX.Client.Utils;
-using V2EX.Client.ViewModels.Links;
+﻿using Prism.Mvvm;
 
 namespace V2EX.Client.ViewModels.Links
 {

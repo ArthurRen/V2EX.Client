@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using V2EX.Client.Commands;
-using V2EX.Client.ViewModels.Infrastructure;
-using V2EX.Foundation.Commands;
+﻿using System.Windows.Input;
+using V2EX.Client.Infrastructure;
+using V2EX.Client.Infrastructure.Commands;
 
 namespace V2EX.Client.ViewModels
 {

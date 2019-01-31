@@ -1,9 +1,5 @@
-﻿using System;
-using System.Net;
-using HtmlAgilityPack;
-using V2EX.Client.Helpers;
-using V2EX.Client.Utils;
-using V2EX.Helpers;
+﻿using System.Net;
+using V2EX.CommonLib.Utils;
 
 namespace V2EX.Client.Network
 {
@@ -63,8 +59,8 @@ namespace V2EX.Client.Network
 
         public LoginInfo(string verificationCodeImageUrl, CookieCollection cookies)
         {
-            Predication.CheckNotNull(verificationCodeImageUrl);
-            Predication.CheckNotNull(cookies);
+            Preconditions.CheckNotNull(verificationCodeImageUrl);
+            Preconditions.CheckNotNull(cookies);
             VerificationCodeImageUrl = verificationCodeImageUrl;
             Cookies = cookies;
         }

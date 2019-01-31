@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using V2EX.Client.Configurations;
 using V2EX.Client.Helpers;
-using V2EX.Client.Utils;
+using V2EX.CommonLib.Utils;
 
 namespace V2EX.Client.Network
 {
@@ -34,7 +31,7 @@ namespace V2EX.Client.Network
 
         public V2EXRequest(Uri uri , V2EXRequestMethod method)
         {
-            Predication.CheckNotNull(uri);
+            Preconditions.CheckNotNull(uri);
             _uri = uri;
             _htmlWeb = new HtmlWeb();
             _htmlWeb.PreRequest += request =>

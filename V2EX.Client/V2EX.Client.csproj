@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{64A7B793-0585-4929-9159-B03AC40CE42D}</ProjectGuid>
+    <ProjectGuid>{99DEB895-B2A0-4D51-8787-58938A21FCB0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>V2EX.Client</RootNamespace>
     <AssemblyName>V2EX.Client</AssemblyName>
@@ -13,7 +13,6 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -24,7 +23,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,14 +32,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.8.11.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.8.11\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
@@ -62,7 +59,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.7.1.0.431\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -71,6 +67,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -89,99 +86,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\AsyncCommand.cs" />
-    <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Configurations\HtmlXPath.cs" />
-    <Compile Include="Configurations\RequestHeaders.cs" />
-    <Compile Include="Controls\CommonPage.cs">
-      <Generator>MSBuild:Compile</Generator>
-    </Compile>
-    <Compile Include="Controls\LodingViewSwitchPresenter.cs" />
-    <Compile Include="Controls\LinkButton.cs" />
-    <Compile Include="Controls\SubTabList.cs" />
-    <Compile Include="Controls\TabList.cs" />
-    <Compile Include="Controls\TopicList.cs" />
-    <Compile Include="Controls\V2exWindow.cs" />
-    <Compile Include="Converters\NotConverter.cs" />
-    <Compile Include="Converters\NotNullToVisibilityConverter.cs" />
-    <Compile Include="Converters\UriToImageSourceConverter.cs" />
-    <Compile Include="Converters\NotBooleanToVisibilityConverter.cs" />
-    <Compile Include="Extensions\ImageExtension.cs" />
-    <Compile Include="Helpers\AsyncConsumerQueue.cs" />
-    <Compile Include="Helpers\CookieHelper.cs" />
-    <Compile Include="Helpers\HtmlParseHelper.cs" />
-    <Compile Include="Helpers\HttpHelper.cs" />
-    <Compile Include="Helpers\MemoryCacheHelper.cs" />
-    <Compile Include="Helpers\UrlHelper.cs" />
-    <Compile Include="Network\NetworkContext.cs" />
-    <Compile Include="Network\V2exRequest.cs" />
-    <Compile Include="Network\V2EXRequestMethod.cs" />
-    <Compile Include="Utils\FuncUtil.cs" />
-    <Compile Include="Utils\Predication.cs" />
-    <Compile Include="ViewModels\Infrastructure\IAwareViewInitialize.cs" />
-    <Compile Include="ViewModels\Infrastructure\IAwareViewLoadedAndUnloaded.cs" />
-    <Compile Include="ViewModels\Infrastructure\ViewModelBase.cs" />
-    <Compile Include="ViewModels\Infrastructure\ViewModelFactory.cs" />
     <Compile Include="ViewModels\Links\ImageLink.cs" />
     <Compile Include="ViewModels\Links\Link.cs" />
-    <Compile Include="ViewModels\MainWindow.vm.cs" />
-    <Compile Include="ViewModels\Pages\MainPage.vm.cs" />
-    <Compile Include="ViewModels\Pages\CommonPage.vm.cs" />
     <Compile Include="ViewModels\Links\TextLink.cs" />
     <Compile Include="ViewModels\Links\TopicItem.cs" />
+    <Compile Include="ViewModels\MainWindow.vm.cs" />
+    <Compile Include="ViewModels\Pages\CommonPage.vm.cs" />
+    <Compile Include="ViewModels\Pages\MainPage.vm.cs" />
     <Compile Include="ViewModels\UserSignInPanel.vm.cs" />
-    <Compile Include="Views\UserSignInPanel.xaml.cs">
-      <DependentUpon>UserSignInPanel.xaml</DependentUpon>
+    <Compile Include="ViewModels\ViewModelFactory.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\PageBuilder.cs" />
-    <Page Include="Converters\Converters.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UserSignInPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="Views\UserSignInPanel.xaml.cs">
+      <DependentUpon>UserSignInPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Styles\V2EX.Style.LoadingViewSwitchPresenter.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\V2EX.Style.V2exWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\V2EX.Style.TabList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\V2EX.Style.SubTabList.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\V2EX.Style.TopicList.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\V2EX.Style.CommonPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\V2EX.Style.LinkButton.xaml">
+    <Compile Include="Configurations\HtmlXPath.cs" />
+    <Compile Include="Configurations\RequestHeaders.cs" />
+    <Compile Include="Controls\CommonPage.cs" />
+    <Compile Include="Controls\LinkButton.cs" />
+    <Compile Include="Controls\LodingViewSwitchPresenter.cs" />
+    <Compile Include="Controls\SubTabList.cs" />
+    <Compile Include="Controls\TabList.cs" />
+    <Compile Include="Controls\TopicList.cs" />
+    <Compile Include="Extensions\ImageExtension.cs" />
+    <Compile Include="Helpers\CookieHelper.cs" />
+    <Compile Include="Helpers\HtmlParseHelper.cs" />
+    <Compile Include="Helpers\HttpHelper.cs" />
+    <Compile Include="Helpers\UrlHelper.cs" />
+    <Page Include="Themes\CommonPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -189,12 +130,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Pages\MainPage.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Themes\LinkButton.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\LoadingViewSwitchPresenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\SubTabList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\TabList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\TopicList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserSignInPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Network\NetworkContext.cs" />
+    <Compile Include="Network\V2exRequest.cs" />
+    <Compile Include="Network\V2EXRequestMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -212,7 +184,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -220,13 +191,28 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\V2EX.Client.Controls\V2EX.Client.Controls.csproj">
+      <Project>{abddae1c-3ec8-4ca3-9dee-85ea8e6f4972}</Project>
+      <Name>V2EX.Client.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\V2EX.Client.Infrastructure\V2EX.Client.Infrastructure.csproj">
+      <Project>{6404eac0-4e94-42d2-a5ae-f71bc07773ff}</Project>
+      <Name>V2EX.Client.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\V2EX.Client.Resources\V2EX.Client.Resources.csproj">
       <Project>{ce235b10-6041-414d-9c1b-744d8ff32a3c}</Project>
       <Name>V2EX.Client.Resources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\V2EX.CommonLib\V2EX.CommonLib.csproj">
+      <Project>{3d879ac2-9280-4b05-9747-d272ad624b89}</Project>
+      <Name>V2EX.CommonLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="ViewModels\Navigation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

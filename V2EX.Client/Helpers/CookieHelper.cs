@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using V2EX.Client.Utils;
+using V2EX.CommonLib.Utils;
 
 namespace V2EX.Client.Helpers
 {
@@ -100,11 +100,11 @@ namespace System.Net
     {
         public static void AddRange(this CookieCollection @this, IEnumerable<Cookie> cookies)
         {
-            Predication.CheckNotNull(@this);
-            Predication.CheckNotNull(cookies);
+            Preconditions.CheckNotNull(@this);
+            Preconditions.CheckNotNull(cookies);
             foreach (var cookie in cookies)
             {
-                Predication.CheckNotNull(cookie);
+                Preconditions.CheckNotNull(cookie);
                 @this.Add(cookie);
             }
         }

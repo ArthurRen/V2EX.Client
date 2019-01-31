@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using V2EX.Client.Configurations;
 using V2EX.Client.Helpers;
-using V2EX.Client.Utils;
 using V2EX.Client.ViewModels;
 using V2EX.Client.ViewModels.Links;
+using V2EX.CommonLib.Utils;
 
 namespace V2EX.Helpers
 {
@@ -23,7 +23,7 @@ namespace V2EX.Helpers
 
         public static string GetVerificationImageUrl(string cssString)
         {
-            Predication.CheckNotNull(cssString);
+            Preconditions.CheckNotNull(cssString);
             var result = BackgroundImageRegex.Match(cssString);
             if (result.Value == string.Empty)
                 return null;
@@ -34,7 +34,7 @@ namespace V2EX.Helpers
 
         public static IEnumerable<HtmlNode> GetTabHtmlNodes(HtmlNode node)
         {
-            Predication.CheckNotNull(node);
+            Preconditions.CheckNotNull(node);
             return node.SelectNodes(HtmlXPath.Instance.MainPage_TopicBox_Tabs);
         }
 
@@ -51,32 +51,32 @@ namespace V2EX.Helpers
 
         public static IEnumerable<HtmlNode> GetLeftSubTabHtmlNodes(HtmlNode node)
         {
-            Predication.CheckNotNull(node);
+            Preconditions.CheckNotNull(node);
             return node.SelectNodes(HtmlXPath.Instance.MainPage_TopicBox_SubLeftTabs);
         }
 
         public static IEnumerable<HtmlNode> GetRightSubTabHtmlNodes(HtmlNode node)
         {
-            Predication.CheckNotNull(node);
+            Preconditions.CheckNotNull(node);
             return node.SelectNodes(HtmlXPath.Instance.MainPage_TopicBox_SubRightTabs);
         }
 
         public static HtmlNode GetTopicBoxHtmlNode(HtmlDocument doc)
         {
-            Predication.CheckNotNull(doc);
+            Preconditions.CheckNotNull(doc);
             return doc.DocumentNode.SelectSingleNode(HtmlXPath.Instance.MainPage_TopicBox);
         }
 
         public static HtmlNodeCollection GetTopicItemsHtmlNodes(HtmlNode topicBoxHtmlNode)
         {
-            Predication.CheckNotNull(topicBoxHtmlNode);
+            Preconditions.CheckNotNull(topicBoxHtmlNode);
             return topicBoxHtmlNode.SelectNodes(HtmlXPath.Instance.MainPage_TopicBox_TopicItems);
         }
 
         public static TopicItem GetTopicItemFromTopicItemNode(HtmlNode topicItemHtmlNode)
         {
             var result = new TopicItem();
-            Predication.CheckNotNull(topicItemHtmlNode);
+            Preconditions.CheckNotNull(topicItemHtmlNode);
 
             // avatar
             var avatarNode =

@@ -24,7 +24,7 @@
 
     <SolidColorBrush x:Key="TopicItemLowTextForeground" Color="#cccccc"/>
 
-    <SolidColorBrush x:Key="TabItemMouseLeaveForeground" Color="#555"/>
+    <SolidColorBrush x:Key="TabItemMouseLeaveForeground" Color="#555555"/>
     <SolidColorBrush x:Key="TabItemMouseHoverForeground" Color="Black"/>
     <SolidColorBrush x:Key="TabItemMouseHoverBackground" Color="#F5F5F5"/>
     <SolidColorBrush x:Key="TabItemSelectedForeground" Color="White"/>
@@ -35,4 +35,13 @@
     <SolidColorBrush x:Key="CaptionButtonMouseHoverBackground" Color="#E5E5E5" />
 
     <SolidColorBrush x:Key="WindowBorderBrush" Color="#0070CC" />
+
+    <Color x:Key="HoverColor">#6DC4FF</Color>
+    <Color x:Key="SelectedColor">#0070CC</Color>
+    <Color x:Key="ClickColor">#0070CC</Color>
+
+    <SolidColorBrush x:Key="HoverBackground" Color="{StaticResource HoverColor}"/>
+    <SolidColorBrush x:Key="SelectedBackground" Color="{StaticResource SelectedColor}"/>
+    <SolidColorBrush x:Key="ClickBackground" Color="{StaticResource ClickColor}"/>
+
 </ResourceDictionary>

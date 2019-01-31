@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Controls;component/Themes/V2EXWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/V2EX.Client.Controls;component/Themes/NavigationItemList.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

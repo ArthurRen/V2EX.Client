@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing.Imaging;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using HtmlAgilityPack;
 using log4net;
-using V2EX.Client.Commands;
+using V2EX.Client.Infrastructure;
+using V2EX.Client.Infrastructure.Commands;
 using V2EX.Client.Network;
-using V2EX.Client.Utils;
-using V2EX.Client.ViewModels.Infrastructure;
 
 namespace V2EX.Client.ViewModels.Pages
 {
@@ -17,7 +14,6 @@ namespace V2EX.Client.ViewModels.Pages
         private bool _isLoadingHtml;
         private bool _isRenderingHtml;
         private int _requestIndex;
-        private readonly object _lock = new object();
         protected ILog Logger { get; }
 
         public bool IsLoadingHtml

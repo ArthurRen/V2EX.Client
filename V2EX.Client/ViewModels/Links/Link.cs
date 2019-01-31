@@ -1,6 +1,6 @@
 ﻿using System;
-using V2EX.Client.Utils;
-using V2EX.Client.ViewModels.Infrastructure;
+using V2EX.Client.Infrastructure;
+using V2EX.CommonLib.Utils;
 
 namespace V2EX.Client.ViewModels.Links
 {
@@ -16,13 +16,13 @@ namespace V2EX.Client.ViewModels.Links
 
         protected Link(Uri uri)
         {
-            Predication.CheckNotNull(uri);
+            Preconditions.CheckNotNull(uri);
             Uri = uri;
         }
 
         protected Link(string address)
         {
-            Predication.IsTrue(!string.IsNullOrEmpty(address));
+            Preconditions.IsTrue(!string.IsNullOrEmpty(address));
             Uri = new Uri(address);
         }
     }

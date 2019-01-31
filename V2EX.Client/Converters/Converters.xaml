@@ -1,9 +1,0 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:V2EX.Client.Converters">
-    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-    <local:NotNullToVisibilityConverter x:Key="NotNullToVisibilityConverter"/>
-    <local:NotBooleanToVisibilityConverter x:Key="NotBooleanToVisibilityConverter"/>
-    <local:UriToImageSourceConverter x:Key="UriToImageSourceConverter"/>
-    <local:NotConverter x:Key="NotConverter"/>
-</ResourceDictionary>
